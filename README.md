@@ -20,7 +20,7 @@
    ```
 2. Clone this config:
    ```bash
-   git clone <your-repo-url> ~/.config/nvim
+   git clone https://github.com/mohammedbilalns/neovim-config ~/.config/nvim
    ```
 3. Start Neovim:
    ```bash
