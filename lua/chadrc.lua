@@ -33,7 +33,7 @@ M.ui = {
   statusline = {
     enabled = true,
     theme = "default",
-    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "supermaven", "cwd", "cursor" },
+    order = { "mode", "file", "git", "%=", "diagnostics", "supermaven", "cwd", "cursor" },
     modules = {
       supermaven = function()
         local ok, api = pcall(require, "supermaven-nvim.api")

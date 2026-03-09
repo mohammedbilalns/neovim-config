@@ -6,7 +6,7 @@ return {
   opts = {
     ensure_installed = {
       -- LSPs from your existing config
-      "tsgo",
+      "typescript-language-server",
       "html",
       "cssls",
       "tailwindcss",

@@ -5,8 +5,11 @@ return {
     "neovim/nvim-lspconfig",
   },
   opts = {
+    automatic_enable = {
+      exclude = { "tsgo" },
+    },
     ensure_installed = {
-      "tsgo",
+      "ts_ls",
       "html",
       "cssls",
       "tailwindcss",
