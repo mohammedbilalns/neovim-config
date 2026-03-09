@@ -10,9 +10,9 @@ keymap.set("n","<leader>sx", "<cmd>close<CR>", {desc = "Close current split"})
 
 -- tab management 
 keymap.set("n", "<leader>uo", "<cmd>tabnew<CR>", {desc="Open a new Tab"})
-keymap.set("n", "<leader>ux", "<cmd>tabclose<CR>", {desc = "Close curren Tab"})
+keymap.set("n", "<leader>ux", "<cmd>tabclose<CR>", {desc = "Close current Tab"})
 keymap.set("n", "<leader>un", "<cmd>tabn<CR>", {desc = "Go to next tab"})
-keymap.set("n", "<leader>up", "<cmd>tabp<CR>", {desc = "Go to previouse tab"})
+keymap.set("n", "<leader>up", "<cmd>tabp<CR>", {desc = "Go to previous tab"})
 keymap.set("n", "<leader>uf", "<cmd>tabnew %<CR>", {desc = "Open buffer in new tab"})
 keymap.set('v', '<leader>dd', '"_dd', { noremap = true, silent = true, desc = "Delete line without copying" })
 

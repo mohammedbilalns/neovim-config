@@ -58,15 +58,15 @@ return {
     -- quickfix 
     map("n", prefix .. "q", function()
        haunt.to_quickfix()
-    end, { desc = "Send Hauntings to QF Lix (buffer)" })
+    end, { desc = "Send Hauntings to QF List (buffer)" })
 
     map("n", prefix .. "Q", function()
       haunt.to_quickfix({ current_buffer = true })
-    end, { desc = "Send Hauntings to QF Lix (all)" })
+    end, { desc = "Send Hauntings to QF List (all)" })
 
     -- yank
     map("n", prefix .. "y", function()
-      haunt.yank_locations({current_buffer = true})
+      haunt.yank_locations({ current_buffer = true })
     end, { desc = "Send Hauntings to Clipboard (buffer)" })
 
     map("n", prefix .. "Y", function()

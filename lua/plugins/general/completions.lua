@@ -1,11 +1,9 @@
+-- Completion engine configuration using nvim-cmp
+--
+-- -> Insert-mode completions: LSP, snippets (LuaSnip), buffer words, and paths
+--
+-- ->  Command-line completions: Search (/ and ?) and Ex commands (:)
 return {
-  {
-    "hrsh7th/cmp-nvim-lsp",
-    event = "InsertEnter",
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-    }
-  },
   {
     "L3MON4D3/LuaSnip",
     event = "InsertEnter",
@@ -20,6 +18,7 @@ return {
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
@@ -29,7 +28,7 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local nvchad_cmp = require("nvchad.cmp")
-      -- load vscode syle snippets from plugins 
+      -- load vscode-style snippets from plugins
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
@@ -52,8 +51,8 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
-          {name = "path"},
-          {name= "supermaven"}
+          { name = "path" },
+          { name = "supermaven" },
         }),
       })
 

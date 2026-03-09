@@ -1,3 +1,5 @@
+-- Mason configuration for package management
+-- Handles installation of LSP servers, DAP adapters, linters, and formatters
 return {
   "williamboman/mason.nvim",
   config = function(_, opts)
@@ -5,23 +7,25 @@ return {
   end,
   opts = {
     ensure_installed = {
-      -- LSPs from your existing config
-      "typescript-language-server",
+      -- LSP Servers
+      "ts_ls",
       "html",
       "cssls",
       "tailwindcss",
       "lua_ls",
       "emmet_ls",
       "prismals",
-      "ruff",
-      "eslint",
       "gopls",
       "rust_analyzer",
       "astro",
 
-      -- DAPs we need
+      -- DAP Adapters
       "js-debug-adapter",
       "delve",
+
+      -- Linters and Formatters
+      "eslint",
+      "ruff",
     },
   },
 }

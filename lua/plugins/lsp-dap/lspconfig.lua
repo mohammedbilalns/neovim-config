@@ -1,3 +1,4 @@
+-- LSP configuration using nvim-lspconfig
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -54,14 +55,5 @@ return {
         },
       },
     })
-
-    -- Keep Biome for web/json formats, but avoid JS/TS completion conflicts with TypeScript LSP.
-    vim.lsp.config("biome", {
-      filetypes = { "astro", "css", "graphql", "html", "json", "jsonc", "svelte", "vue" },
-    })
-
-    -- Prefer ts_ls for TS import completion reliability.
-    pcall(vim.lsp.enable, "tsgo", false)
-    vim.lsp.enable("ts_ls")
   end,
 }

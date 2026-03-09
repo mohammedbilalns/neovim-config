@@ -1,3 +1,4 @@
+-- NvChad UI configuration - themes, base46 highlights, and terminal toggles
 return {
   {
     "nvzone/volt",

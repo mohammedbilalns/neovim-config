@@ -1,3 +1,6 @@
+-- LSP keymaps and diagnostic configuration
+-- -> sets up LSP-related keybindings.
+-- ->  configures diagnostic signs for error/warning/hint/info display
 local keymap = vim.keymap
 
 local function snacks_picker(name, opts)

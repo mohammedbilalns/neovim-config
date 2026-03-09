@@ -1,3 +1,4 @@
+-- DAP (Debug Adapter Protocol) configuration
 return {
   "mfussenegger/nvim-dap",
   optional = true,
@@ -16,6 +17,8 @@ return {
 
   config = function()
     local dap = require("dap")
+
+    -- JavaScript/TypeScript adapter (pwa-node)
     if not dap.adapters["pwa-node"] then
       require("dap").adapters["pwa-node"] = {
         type = "server",
@@ -30,6 +33,8 @@ return {
         },
       }
     end
+
+    -- Node adapter wrapper for pwa-node
     if not dap.adapters["node"] then
       dap.adapters["node"] = function(cb, config)
         if config.type == "node" then
@@ -44,8 +49,8 @@ return {
       end
     end
 
+    -- JavaScript/TypeScript configurations
     local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
-
     local vscode = require("dap.ext.vscode")
     vscode.type_to_filetypes["node"] = js_filetypes
     vscode.type_to_filetypes["pwa-node"] = js_filetypes
@@ -71,7 +76,7 @@ return {
       end
     end
 
-    -- Go adapter and configuration
+    -- Go adapter (delve)
     if not dap.adapters.go then
       dap.adapters.go = {
         type = "server",
@@ -83,6 +88,7 @@ return {
       }
     end
 
+    -- Go configurations
     if not dap.configurations.go then
       dap.configurations.go = {
         {

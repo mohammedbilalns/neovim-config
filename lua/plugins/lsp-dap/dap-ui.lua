@@ -1,3 +1,4 @@
+-- DAP UI configuration
 return {
   "rcarriga/nvim-dap-ui",
   dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -5,9 +6,13 @@ return {
     local dapui = require("dapui")
     dapui.setup()
     local dap = require("dap")
+
+    -- Auto-open UI when debugging starts
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end
+
+    -- Auto-close UI when debugging ends
     dap.listeners.before.event_terminated["dapui_config"] = function()
       dapui.close()
     end

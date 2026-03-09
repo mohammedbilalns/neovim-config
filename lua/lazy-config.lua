@@ -1,3 +1,6 @@
+-- Lazy.nvim configuration
+--  ->  Bootstrap: Installs lazy.nvim if not present
+--  ->  Plugin specs: Imports plugin configurations
 local vim = vim
 
 vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46/"
@@ -17,7 +20,23 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { import ="plugins"}, {import = "plugins.lsp"}
+    -- Core plugin (plenary)
+    { import = "plugins.init" },
+
+    -- UI plugins: themes, dashboard, pickers, notifications
+    { import = "plugins.ui" },
+
+    -- General plugins: completion, treesitter, formatting, productivity tools
+    { import = "plugins.general" },
+
+    -- Navigation plugins: file browsers, project management, search
+    { import = "plugins.navigation" },
+
+    -- LSP/DAP: Language servers, debugging, and Mason package manager
+    { import = "plugins.lsp-dap" },
+
+    -- AI plugins: code completion and assistance
+    { import = "plugins.ai" },
   },
   change_detection = {
     notify = false

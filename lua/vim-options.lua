@@ -7,7 +7,7 @@ opt.tabstop = 2 --  2 spaces for tabs
 opt.shiftwidth = 2 -- 2 spaces for indend width 
 opt.expandtab = true -- expand tab to space  
 opt.autoindent = true -- copy indent from current line when starting a new one  
-opt.wrap  = false -- keep wrapping off by default (better for code)  
+opt.wrap = true -- enable line wrapping
 -- search settings 
 opt.ignorecase = true -- ignore case when searching 
 opt.smartcase = true -- assumes case sensitive for mixed case search  
@@ -31,10 +31,10 @@ opt.timeoutlen = 400
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
 opt.foldlevelstart = 99
-opt.foldcolumn = '1'
+opt.foldcolumn = '0'
 opt.fillchars:append { fold = " ", eob = " " }
 
--- cutstom folding 
+-- Custom folding
 function FoldText()
   local line = vim.fn.getline(vim.v.foldstart)
   local line_count = vim.v.foldend - vim.v.foldstart
