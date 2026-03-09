@@ -5,7 +5,6 @@ My Personal Neovim Config Powered by [lazy.nvim](https://github.com/folke/lazy.n
 https://github.com/user-attachments/assets/856fdf17-8156-496d-b357-28b85cc6ff19
 
 
-
 ## Table of Contents
 
 - [Features](#features)
@@ -17,8 +16,10 @@ https://github.com/user-attachments/assets/856fdf17-8156-496d-b357-28b85cc6ff19
   - [Core/UI](#coreui)
   - [LSP, Completion, Formatting](#lsp-completion-formatting)
   - [Treesitter/Languages](#treesitterlanguages)
+  - [Language-Specific](#language-specific)
   - [Navigation/Productivity](#navigationproductivity)
   - [Debugging](#debugging)
+  - [General Purpose](#general-purpose)
 
 ## Features
 
@@ -71,11 +72,17 @@ nvim
 ## Project Structure
 
 - `init.lua` - main entry point
-- `lua/lazy-config.lua` - lazy.nvim bootstrap and plugin imports
+- `lua/lazy-config.lua` - lazy.nvim bootstrap and plugin imports (organized by category folders)
 - `lua/chadrc.lua` - NvChad UI configuration
 - `lua/lsp.lua` - LSP keymaps/diagnostic behavior on attach
-- `lua/plugins/` - plugin specs
-- `lua/plugins/lsp/` - LSP-related specs
+- `lua/vim-options.lua` - core Neovim options
+- `lua/plugins/` - plugin specs organized by category:
+  - `general/` - general purpose plugins (completion, treesitter, autopairs, productivity tools)
+  - `ui/` - UI components (themes, statusline, tabline)
+  - `navigation/` - file browsers, project management, search/navigation
+  - `lsp-dap/` - LSP servers, DAP debugging, Mason package manager
+  - `language/` - language-specific configurations (TypeScript, etc.)
+  - `ai/` - AI-powered completion tools
 - `after/` - runtime overrides
 
 ## Extending This Config
@@ -113,14 +120,13 @@ return {
 | Plugin | Description |
 | --- | --- |
 | [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP server configuration |
-| [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) | External tool manager |
+| [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) | Package manager for LSP servers, DAP adapters, linters, and formatters |
 | [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) | Bridges Mason with lspconfig |
 | [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Completion engine |
 | [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) | LSP completion source for cmp |
 | [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Snippet engine |
 | [nvimtools/none-ls.nvim](https://github.com/nvimtools/none-ls.nvim) | Integrates external formatters/diagnostics via LSP interface |
 | [supermaven-inc/supermaven-nvim](https://github.com/supermaven-inc/supermaven-nvim) | AI completion integration |
-| [dmmulroy/ts-error-translator.nvim](https://github.com/dmmulroy/ts-error-translator.nvim) | Better TS diagnostic messages |
 | [Zeioth/garbage-day.nvim](https://github.com/Zeioth/garbage-day.nvim) | LSP memory cleanup helper |
 
 ### Treesitter/Languages
@@ -128,28 +134,24 @@ return {
 | Plugin | Description |
 | --- | --- |
 | [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax tree parsing/highlighting |
-| [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) | Auto-close/rename HTML-like tags |
 | [imsnif/kdl.vim](https://github.com/imsnif/kdl.vim) | KDL syntax support |
-| [nvim-flutter/flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim) | Flutter/Dart tooling |
+
+### Language-Specific
+
+| Plugin | Description |
+| --- | --- |
+| [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) | Auto-close/rename HTML/JSX/TSX tags |
+| [dmmulroy/ts-error-translator.nvim](https://github.com/dmmulroy/ts-error-translator.nvim) | Better TS diagnostic messages |
 
 ### Navigation/Productivity
 
 | Plugin | Description |
 | --- | --- |
 | [folke/flash.nvim](https://github.com/folke/flash.nvim) | Fast jump/search motions |
-| [folke/trouble.nvim](https://github.com/folke/trouble.nvim) | Diagnostics/symbol/location list UI |
 | [coffebar/neovim-project](https://github.com/coffebar/neovim-project) | Project switching + startup session logic |
 | [DreamMaoMao/yazi.nvim](https://github.com/DreamMaoMao/yazi.nvim) | Yazi terminal file manager integration |
 | [stevearc/oil.nvim](https://github.com/stevearc/oil.nvim) | Filesystem editing buffer |
-| [TheNoeTrevino/haunt.nvim](https://github.com/TheNoeTrevino/haunt.nvim) | Persistent annotations/bookmarks |
-| [nemanjamalesija/smart-paste.nvim](https://github.com/nemanjamalesija/smart-paste.nvim) | Context-aware paste behavior |
-| [szw/vim-maximizer](https://github.com/szw/vim-maximizer) | Toggle split/window maximize |
-| [brenoprata10/nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors) | Inline color previews |
-| [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) | Highlight and navigate TODO/FIX comments |
-| [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | Render markdown styling in buffer |
-| [barrett-ruth/live-server.nvim](https://github.com/barrett-ruth/live-server.nvim) | Start/stop local live-server |
 | [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) | Shared Lua utility library |
-| [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto-close brackets/quotes |
 
 ### Debugging
 
@@ -158,4 +160,16 @@ return {
 | [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap) | Debug Adapter Protocol client |
 | [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) | UI panels for nvim-dap |
 
+### General Purpose
 
+| Plugin | Description |
+| --- | --- |
+| [folke/trouble.nvim](https://github.com/folke/trouble.nvim) | Diagnostics/symbol/location list UI |
+| [TheNoeTrevino/haunt.nvim](https://github.com/TheNoeTrevino/haunt.nvim) | Persistent annotations/bookmarks |
+| [nemanjamalesija/smart-paste.nvim](https://github.com/nemanjamalesija/smart-paste.nvim) | Context-aware paste behavior |
+| [szw/vim-maximizer](https://github.com/szw/vim-maximizer) | Toggle split/window maximize |
+| [brenoprata10/nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors) | Inline color previews |
+| [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) | Highlight and navigate TODO/FIX comments |
+| [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | Render markdown styling in buffer |
+| [barrett-ruth/live-server.nvim](https://github.com/barrett-ruth/live-server.nvim) | Start/stop local live-server |
+| [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto-close brackets/quotes |
