@@ -1,13 +1,13 @@
 # Neovim Config
 
 My Personal Neovim Config Powered by [lazy.nvim](https://github.com/folke/lazy.nvim).
+![Preview](assets/preview.mp4)
 
 ## Table of Contents
 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Install](#install)
-- [Install LSP, DAP, Linters, Formatters](#install-lsp-dap-linters-formatters)
 - [Project Structure](#project-structure)
 - [Extending This Config](#extending-this-config)
 - [Plugins Included](#plugins-included)
@@ -16,7 +16,6 @@ My Personal Neovim Config Powered by [lazy.nvim](https://github.com/folke/lazy.n
   - [Treesitter/Languages](#treesitterlanguages)
   - [Navigation/Productivity](#navigationproductivity)
   - [Debugging](#debugging)
-  - [Dependency-only Plugins](#dependency-only-plugins)
 
 ## Features
 
