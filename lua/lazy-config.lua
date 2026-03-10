@@ -26,11 +26,17 @@ require("lazy").setup({
     -- UI plugins: themes, dashboard, pickers, notifications
     { import = "plugins.ui" },
 
+    -- Snacks.nvim: 
+    { import = "plugins.snacks" },
+
     -- General plugins: completion, treesitter, formatting, productivity tools
     { import = "plugins.general" },
 
     -- Navigation plugins: file browsers, project management, search
     { import = "plugins.navigation" },
+
+    -- Language-specific plugins: completion, snippets, and tool support
+    { import = "plugins.language" },
 
     -- LSP/DAP: Language servers, debugging, and Mason package manager
     { import = "plugins.lsp-dap" },
