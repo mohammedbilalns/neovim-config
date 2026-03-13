@@ -22,7 +22,12 @@ end
 
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
   callback = function()
-    if #vim.api.nvim_buf_get_name(0) ~= 0 and vim.bo.buflisted then
+    if vim.bo.buftype == ""
+      and #vim.api.nvim_buf_get_name(0) ~= 0
+      and vim.bo.buflisted
+      and vim.bo.modifiable
+      and vim.bo.modified
+      and not vim.bo.readonly then
       vim.cmd "silent w"
 
       local time = os.date "%I:%M %p"
