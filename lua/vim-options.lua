@@ -28,8 +28,8 @@ opt.timeout = true
 opt.timeoutlen = 400
 -- vim.wo.number = true --show the line number
 -- folding 
-opt.foldmethod = 'expr'
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldmethod = 'manual'
+opt.foldexpr = ''
 opt.foldlevelstart = 99
 opt.foldcolumn = '0'
 opt.fillchars:append { fold = " ", eob = " " }
