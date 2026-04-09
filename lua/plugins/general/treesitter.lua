@@ -22,6 +22,7 @@ return {
         "c", "lua", "vim", "vimdoc", "latex", "rust", "bash",
         "json", "javascript", "typescript", "tsx", "prisma",
         "python", "yaml", "dockerfile", "gitignore", "go",
+        "markdown", "markdown_inline",
       },
       incremental_selection = {
         enable = true,
@@ -35,4 +36,3 @@ return {
     })
   end,
 }
-
