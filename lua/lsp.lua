@@ -3,6 +3,9 @@
 -- ->  configures diagnostic signs for error/warning/hint/info display
 local keymap = vim.keymap
 
+-- Workaround for Neovim document_color assertion spam when clients detach unexpectedly.
+vim.lsp.document_color.enable(false)
+
 local function snacks_picker(name, opts)
   local ok, snacks = pcall(require, "snacks")
   if ok and snacks.picker and snacks.picker[name] then

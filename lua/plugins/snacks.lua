@@ -6,7 +6,7 @@ return {
   opts = {
     animate = { enabled = true },
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = { enabled = false },
     hints = { enabled = true },
     lazygit = { enabled = true },
     indent = { enabled = true },
