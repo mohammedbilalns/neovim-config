@@ -8,23 +8,23 @@ return {
   opts = {
     ensure_installed = {
       -- LSP Servers
-      "ts_ls",
-      "html",
-      "cssls",
-      "tailwindcss",
-      "lua_ls",
-      "emmet_ls",
-      "prismals",
+      "typescript-language-server",
+      "html-lsp",
+      "css-lsp",
+      "tailwindcss-language-server",
+      "lua-language-server",
+      "emmet-language-server",
+      "prisma-language-server",
       "gopls",
-      "rust_analyzer",
-      "astro",
+      "rust-analyzer",
+      "astro-language-server",
 
       -- DAP Adapters
       "js-debug-adapter",
       "delve",
 
       -- Linters and Formatters
-      "eslint",
+      "eslint-lsp",
       "ruff",
     },
   },

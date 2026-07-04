@@ -7,6 +7,11 @@ return {
   config = function()
     local treesitter = require("nvim-treesitter.configs")
     local query = require("vim.treesitter.query")
+    local install = require("nvim-treesitter.install")
+
+    -- tree-sitter 0.26.x removed `--no-bindings`; nvim-treesitter still
+    -- probes that flag unless we override the generator args here.
+    install.ts_generate_args = { "generate", "--abi", vim.treesitter.language_version }
 
     local function patch_query_predicates()
       -- Ensure upstream predicates are loaded before overriding.
