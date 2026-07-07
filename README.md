@@ -2,6 +2,8 @@
 
 
 My Personal Neovim Config Powered by [lazy.nvim](https://github.com/folke/lazy.nvim).
+
+
 https://github.com/user-attachments/assets/856fdf17-8156-496d-b357-28b85cc6ff19
 
 
