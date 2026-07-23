@@ -161,7 +161,7 @@ return {
       fold = { enable = true },
       ensure_installed = {
         "c", "lua", "vim", "vimdoc", "latex", "rust", "bash",
-        "json", "javascript", "typescript", "tsx", "prisma",
+        "json", "javascript", "typescript", "tsx", "graphql", "prisma",
         "python", "yaml", "dockerfile", "gitignore", "go",
         "markdown", "markdown_inline",
       },

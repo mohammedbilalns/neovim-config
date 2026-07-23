@@ -9,6 +9,7 @@ return {
     ensure_installed = {
       -- LSP Servers
       "typescript-language-server",
+      "graphql-language-service-cli",
       "html-lsp",
       "css-lsp",
       "tailwindcss-language-server",
@@ -25,6 +26,7 @@ return {
 
       -- Linters and Formatters
       "eslint-lsp",
+      "prettier",
       "ruff",
     },
   },
