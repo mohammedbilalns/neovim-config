@@ -8,6 +8,7 @@ opt.shiftwidth = 2 -- 2 spaces for indend width
 opt.expandtab = true -- expand tab to space  
 opt.autoindent = true -- copy indent from current line when starting a new one  
 opt.wrap = true -- enable line wrapping
+opt.cmdheight = 0 
 -- search settings 
 opt.ignorecase = true -- ignore case when searching 
 opt.smartcase = true -- assumes case sensitive for mixed case search  
@@ -33,6 +34,13 @@ opt.foldexpr = ''
 opt.foldlevelstart = 99
 opt.foldcolumn = '0'
 opt.fillchars:append { fold = " ", eob = " " }
+
+-- diagnostics 
+vim.diagnostic.config({
+  virtual_text = true 
+})
+
+vim.api.nvim_set_hl(0, "Normal", {bg=  "none"})
 
 -- Custom folding
 function FoldText()
