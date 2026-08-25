@@ -14,30 +14,40 @@ vim.api.nvim_create_autocmd("BufRead", {
 })
 
 
+local autosave_timer = nil
+
 local function clear_cmdarea()
   vim.defer_fn(function()
     vim.api.nvim_echo({}, false, {})
   end, 800)
 end
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+local function autosave()
+  if vim.bo.buftype == ""
+    and #vim.api.nvim_buf_get_name(0) ~= 0
+    and vim.bo.buflisted
+    and vim.bo.modifiable
+    and vim.bo.modified
+    and not vim.bo.readonly then
+    vim.cmd "silent w"
+
+    local time = os.date "%I:%M %p"
+    vim.api.nvim_echo({ { "󰄳", "LazyProgressDone" }, { " file autosaved at " .. time } }, false, {})
+    clear_cmdarea()
+  end
+end
+
+vim.api.nvim_create_autocmd("TextChanged", {
   callback = function()
-    if vim.bo.buftype == ""
-      and #vim.api.nvim_buf_get_name(0) ~= 0
-      and vim.bo.buflisted
-      and vim.bo.modifiable
-      and vim.bo.modified
-      and not vim.bo.readonly then
-      vim.cmd "silent w"
-
-      local time = os.date "%I:%M %p"
-
-      -- print nice colored msg
-      vim.api.nvim_echo({ { "󰄳", "LazyProgressDone" }, { " file autosaved at " .. time } }, false, {})
-
-      clear_cmdarea()
+    if autosave_timer and not autosave_timer:is_closing() then
+      autosave_timer:close()
     end
+    autosave_timer = vim.defer_fn(autosave, 2000)
   end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = autosave,
 })
 
 -- -- highlight yank
