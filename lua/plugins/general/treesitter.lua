@@ -158,7 +158,7 @@ return {
         disable = { "latex" },
       },
       indent = { enable = true },
-      fold = { enable = true },
+      fold = { enable = false },
       ensure_installed = {
         "c", "lua", "vim", "vimdoc", "latex", "rust", "bash",
         "json", "javascript", "typescript", "tsx", "graphql", "prisma",
