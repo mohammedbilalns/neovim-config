@@ -9,7 +9,7 @@ return {
   },
   opts = {
     automatic_enable = {
-      exclude = { "tsgo" },
+      exclude = { "ts_ls" },
     },
   },
 }

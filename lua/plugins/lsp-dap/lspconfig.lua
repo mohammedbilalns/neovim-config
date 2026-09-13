@@ -17,7 +17,7 @@ return {
     })
 
     -- Configure TypeScript/JavaScript server
-    vim.lsp.config("tsgo", {
+    vim.lsp.config("ts_ls", {
       root_dir = function(bufnr, on_dir)
         local root_markers = {
           "package-lock.json",
@@ -95,7 +95,7 @@ return {
     -- Enable all configured LSPs
     vim.lsp.enable({
       "graphql",
-      "tsgo",
+      "ts_ls",
     })
   end,
 }
