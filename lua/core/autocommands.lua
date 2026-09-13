@@ -13,6 +13,13 @@ vim.api.nvim_create_autocmd("BufRead", {
   end
 })
 
+vim.filetype.add({
+  extension = {
+    ejs = "ejs",
+  }
+})
+
+pcall(vim.treesitter.language.register, "html", "ejs")
 
 local autosave_timer = nil
 

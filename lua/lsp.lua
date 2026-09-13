@@ -35,7 +35,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap.set("n", "gt", function()
       snacks_picker("lsp_type_definitions")
     end, { buffer = buf, silent = true, desc = "Show LSP type definitions" })
-    keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = buf, silent = true, desc = "LSP Code Actions" })
     keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = buf, silent = true, desc = "LSP Rename" })
     keymap.set("n", "<leader>lb", function()
       snacks_picker("diagnostics_buffer")

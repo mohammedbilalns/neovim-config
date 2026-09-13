@@ -8,8 +8,12 @@ return {
     "neovim/nvim-lspconfig",
   },
   opts = {
-    automatic_enable = {
-      exclude = { "ts_ls" },
+    handlers = {
+      function(server_name)
+        if server_name ~= "ts_ls" then
+          require("lspconfig")[server_name].setup({})
+        end
+      end,
     },
   },
 }

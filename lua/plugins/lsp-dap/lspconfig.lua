@@ -92,10 +92,20 @@ return {
       end,
     })
 
+    vim.lsp.config("html", {
+      filetypes = { "html", "templ", "ejs" },
+    })
+
+    vim.lsp.config("emmet_language_server", {
+      filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "ejs" },
+    })
+
     -- Enable all configured LSPs
     vim.lsp.enable({
       "graphql",
       "ts_ls",
+      "html",
+      "emmet_language_server",
     })
   end,
 }
