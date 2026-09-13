@@ -54,6 +54,7 @@ vim.api.nvim_create_autocmd("TextChanged", {
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
+  nested = true,
   callback = autosave,
 })
 
