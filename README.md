@@ -1,6 +1,5 @@
 # Neovim Config
 
-
 My Personal Neovim Config Powered by [lazy.nvim](https://github.com/folke/lazy.nvim).
 
 https://github.com/user-attachments/assets/856fdf17-8156-496d-b357-28b85cc6ff19
@@ -20,17 +19,18 @@ https://github.com/user-attachments/assets/856fdf17-8156-496d-b357-28b85cc6ff19
   - [Language-Specific](#language-specific)
   - [Navigation/Productivity](#navigationproductivity)
   - [Debugging](#debugging)
+  - [AI Tools](#ai-tools)
   - [General Purpose](#general-purpose)
 
 ## Features
 
 - NvChad-based UI 
 - LSP configuration via `nvim-lspconfig`, `mason.nvim`, and `mason-lspconfig.nvim`
-- Completion using `nvim-cmp` + LuaSnip + Supermaven source
+- Completion using `nvim-cmp` + LuaSnip
 - Treesitter highlighting with auto-install parsers
 - Workflow utilities and fuzzy finding through the Snacks picker ecosystem
-- Project/session Mangement via `neovim-project` + `neovim-session-manager`
 - Debugging support via `nvim-dap` and related DAP tooling
+- AI integrations for smart coding assistance
 
 ## Prerequisites
 
@@ -40,8 +40,16 @@ Required:
 - `neovim >= 0.11`
 
 Recommended:
+
 - `fd`
 - `ripgrep` (`rg`)
+
+Optional (LaTeX/VimTeX Support):
+
+To use the included LaTeX support (`vimtex`), you will need a TeX distribution and a supported PDF viewer:
+- **TeX Distribution**: [TeX Live](https://www.tug.org/texlive/) (e.g., `texlive-full` on Ubuntu or `texlive-meta` on Arch Linux)
+- **PDF Viewer**: [Zathura](https://pwmt.org/projects/zathura/) is configured as the default viewer for SyncTeX capabilities.
+  - *Note*: Ensure you install a PDF backend for Zathura (like `zathura-pdf-mupdf` or `zathura-pdf-poppler`) and `xdotool` (for X11) for backward search functionality.
 
 ## Install
 
@@ -77,13 +85,14 @@ nvim
 - `lua/chadrc.lua` - NvChad UI configuration
 - `lua/lsp.lua` - LSP keymaps/diagnostic behavior on attach
 - `lua/vim-options.lua` - core Neovim options
+- `lua/core/` - core autocommands and keymaps
 - `lua/plugins/` - plugin specs organized by category:
+  - `ai/` - AI-powered completion and chat tools
   - `general/` - general purpose plugins (completion, treesitter, autopairs, productivity tools)
-  - `ui/` - UI components (themes, statusline, tabline)
-  - `navigation/` - file browsers, project management, search/navigation
-  - `lsp-dap/` - LSP servers, DAP debugging, Mason package manager
   - `language/` - language-specific configurations (TypeScript, etc.)
-  - `ai/` - AI-powered completion tools
+  - `lsp-dap/` - LSP servers, DAP debugging, Mason package manager
+  - `navigation/` - file browsers, search/navigation
+  - `ui/` - UI components (themes, statusline, tabline)
 - `after/` - runtime overrides
 
 ## Extending This Config
@@ -113,7 +122,9 @@ return {
 | [nvzone/menu](https://github.com/nvzone/menu) | Menu UI utilities |
 | [nvzone/volt](https://github.com/nvzone/volt) | UI toolkit used by NvChad components |
 | [folke/which-key.nvim](https://github.com/folke/which-key.nvim) | Keymap hint popup |
-| [folke/noice.nvim](https://github.com/folke/noice.nvim) | Improved command line/messages UI |
+| [rachartier/tiny-cmdline.nvim](https://github.com/rachartier/tiny-cmdline.nvim) | Improved command line/messages UI |
+| [j-hui/fidget.nvim](https://github.com/j-hui/fidget.nvim) | Standalone UI for nvim-lsp progress |
+| [szw/vim-maximizer](https://github.com/szw/vim-maximizer) | Toggle split/window maximize |
 | [folke/snacks.nvim](https://github.com/folke/snacks.nvim) | Picker + utility modules (dashboard, grep, lazygit, etc.) |
 
 ### LSP, Completion, Formatting
@@ -127,15 +138,14 @@ return {
 | [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) | LSP completion source for cmp |
 | [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Snippet engine |
 | [nvimtools/none-ls.nvim](https://github.com/nvimtools/none-ls.nvim) | Integrates external formatters/diagnostics via LSP interface |
-| [supermaven-inc/supermaven-nvim](https://github.com/supermaven-inc/supermaven-nvim) | AI completion integration |
-| [Zeioth/garbage-day.nvim](https://github.com/Zeioth/garbage-day.nvim) | LSP memory cleanup helper |
+| [rachartier/tiny-inline-diagnostic.nvim](https://github.com/rachartier/tiny-inline-diagnostic.nvim) | Inline diagnostics UI |
+| [danymat/neogen](https://github.com/danymat/neogen) | Annotation generator |
 
 ### Treesitter/Languages
 
 | Plugin | Description |
 | --- | --- |
 | [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax tree parsing/highlighting |
-| [imsnif/kdl.vim](https://github.com/imsnif/kdl.vim) | KDL syntax support |
 
 ### Language-Specific
 
@@ -143,15 +153,17 @@ return {
 | --- | --- |
 | [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) | Auto-close/rename HTML/JSX/TSX tags |
 | [dmmulroy/ts-error-translator.nvim](https://github.com/dmmulroy/ts-error-translator.nvim) | Better TS diagnostic messages |
+| [devdammit/openapi.nvim](https://github.com/devdammit/openapi.nvim) | OpenAPI spec viewer |
+| [lervag/vimtex](https://github.com/lervag/vimtex) | LaTeX support |
 
 ### Navigation/Productivity
 
 | Plugin | Description |
 | --- | --- |
 | [folke/flash.nvim](https://github.com/folke/flash.nvim) | Fast jump/search motions |
-| [coffebar/neovim-project](https://github.com/coffebar/neovim-project) | Project switching + startup session logic |
 | [DreamMaoMao/yazi.nvim](https://github.com/DreamMaoMao/yazi.nvim) | Yazi terminal file manager integration |
 | [stevearc/oil.nvim](https://github.com/stevearc/oil.nvim) | Filesystem editing buffer |
+| [folke/trouble.nvim](https://github.com/folke/trouble.nvim) | Diagnostics/symbol/location list UI |
 | [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) | Shared Lua utility library |
 
 ### Debugging
@@ -161,16 +173,24 @@ return {
 | [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap) | Debug Adapter Protocol client |
 | [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) | UI panels for nvim-dap |
 
+### AI Tools
+
+| Plugin | Description |
+| --- | --- |
+| [supermaven-inc/supermaven-nvim](https://github.com/supermaven-inc/supermaven-nvim) | AI completion integration |
+| [carlos-algms/agentic.nvim](https://github.com/carlos-algms/agentic.nvim) | Agentic chat integration |
+| [nickjvandyke/opencode.nvim](https://github.com/nickjvandyke/opencode.nvim) | AI coding assistant |
+
 ### General Purpose
 
 | Plugin | Description |
 | --- | --- |
-| [folke/trouble.nvim](https://github.com/folke/trouble.nvim) | Diagnostics/symbol/location list UI |
 | [TheNoeTrevino/haunt.nvim](https://github.com/TheNoeTrevino/haunt.nvim) | Persistent annotations/bookmarks |
 | [nemanjamalesija/smart-paste.nvim](https://github.com/nemanjamalesija/smart-paste.nvim) | Context-aware paste behavior |
-| [szw/vim-maximizer](https://github.com/szw/vim-maximizer) | Toggle split/window maximize |
-| [brenoprata10/nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors) | Inline color previews |
 | [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) | Highlight and navigate TODO/FIX comments |
 | [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | Render markdown styling in buffer |
 | [barrett-ruth/live-server.nvim](https://github.com/barrett-ruth/live-server.nvim) | Start/stop local live-server |
 | [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto-close brackets/quotes |
+| [chrisgrieser/nvim-chainsaw](https://github.com/chrisgrieser/nvim-chainsaw) | Log statement generator |
+| [okuuva/auto-save.nvim](https://github.com/okuuva/auto-save.nvim) | Auto-save buffers |
+| [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git integration |

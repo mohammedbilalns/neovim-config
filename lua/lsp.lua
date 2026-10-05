@@ -40,6 +40,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       snacks_picker("diagnostics_buffer")
     end, { buffer = buf, silent = true, desc = "LSP Buffer Diagnostics" })
     keymap.set("n", "<leader>ll", vim.diagnostic.open_float, { buffer = buf, silent = true, desc = "LSP Line Diagnostics" })
+    keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = buf, silent = true, desc = "Code Action" })
     keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { buffer = buf, silent = true, desc = "Go to previous diagnostic" })
     keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { buffer = buf, silent = true, desc = "Go to next diagnostic" })
     keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buf, silent = true, desc = "Show documentation for what is under cursor" })
