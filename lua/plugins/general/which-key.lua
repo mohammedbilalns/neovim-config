@@ -22,6 +22,7 @@ return {
         { "<leader>s", group = "System" },
         { "<leader>t", group = "Terminal" },
         { "<leader>u", group = "Tabs" },
+        { "<leader>v", group = "VimTeX" },
         { "<leader>x", group = "Trouble" },
       })
     end,
