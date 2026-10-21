@@ -6,6 +6,16 @@ local keymap = vim.keymap
 -- Workaround for Neovim document_color assertion spam when clients detach unexpectedly.
 vim.lsp.document_color.enable(false)
 
+-- Workaround for Neovim 0.12 crash when an LSP server sends nil registrations.
+-- https://github.com/neovim/neovim/issues/XXXXX
+local original_register = vim.lsp.handlers["client/registerCapability"]
+vim.lsp.handlers["client/registerCapability"] = function(err, params, ctx)
+  if not params or not params.registrations then
+    return vim.NIL
+  end
+  return original_register(err, params, ctx)
+end
+
 local function snacks_picker(name, opts)
   local ok, snacks = pcall(require, "snacks")
   if ok and snacks.picker and snacks.picker[name] then

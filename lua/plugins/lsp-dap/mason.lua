@@ -41,9 +41,12 @@ return {
       "gopls",
       "rust-analyzer",
       "astro-language-server",
+      "jdtls",
 
       -- DAP Adapters
       "js-debug-adapter",
+      "java-debug-adapter",
+      "java-test",
       "delve",
 
       -- Linters and Formatters
